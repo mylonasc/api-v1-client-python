@@ -297,8 +297,12 @@ class SimpleAddress:
         self.total_received = a['total_received']
         self.total_sent = a['total_sent']
         self.final_balance = a['final_balance']
-        self.change_index = a['change_index']
-        self.account_index = a['account_index']
+        if hasattr(a,'change_index') and hasattr(a,'account_index'):
+            self.change_index = a['change_index']
+            self.account_index = a['account_index']
+        else:
+            self.change_index = 'unknown'
+            self.account_index = 'unknown'
 
 
 class MultiAddress:
